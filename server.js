@@ -12,7 +12,7 @@ mongoose.connect(`${process.env.MONGO_URL}/exam`, { useNewUrlParser: true, useUn
 
 
 const { seedCollections } = require('./model/flower.model')
-const { getFlowers, getFavFlowers, addFavFlowers, deleteFavFlowers } = require('./controller/flowers.controller')
+const { getFlowers, getFavFlowers, addFavFlowers, deleteFavFlowers, updateFavFlowers } = require('./controller/flowers.controller')
 
 // seedCollections();
 
@@ -22,7 +22,7 @@ app.get('/flowers', getFlowers)
 app.get('/fav', getFavFlowers)
 app.post('/add', addFavFlowers)
 app.delete('/delete/:id', deleteFavFlowers)
-// app.put('/update/:flower_id', updateFavFlowers)
+app.put('/update/:flower_id', updateFavFlowers)
 
 
 app.listen(PORT, () => console.log(`listening on port http://localhost:${PORT}`))

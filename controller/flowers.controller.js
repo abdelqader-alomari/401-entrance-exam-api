@@ -33,25 +33,28 @@ const getFavFlowers = (req, res) => {
 const deleteFavFlowers = (req, res) => {
     const id = req.params.id;
     flowersModel.deleteOne({ _id: id }, (error, data) => {
+
+    })
+    flowersModel.find({}, (error, data) => {
         res.send(data)
     })
 };
 
-// const updateFavFlowers = (req, res) => {
-//     const flowerId = req.params.flower_id;
-//     const { name, photo, instructions } = req.body;
-//     flowersModel.findByIdAndUpdate({ _id: flowerId },
-//         {
-//             name: name,
-//             photo: photo,
-//             instructions: instructions,
-//         },
-//         { new: true }, (error, data) => {
-//             res.send(data);
-//         })
-// }
+const updateFavFlowers = (req, res) => {
+    const flowerId = req.params.flower_id;
+    const { name, photo, instructions } = req.body;
+    flowersModel.findByIdAndUpdate({ _id: flowerId },
+        {
+            name: name,
+            photo: photo,
+            instructions: instructions,
+        },
+        { new: true }, (error, data) => {
+            res.send(data);
+        })
+}
 
 
 
 
-module.exports = { getFlowers, addFavFlowers, getFavFlowers, deleteFavFlowers }
+module.exports = { getFlowers, addFavFlowers, getFavFlowers, deleteFavFlowers, updateFavFlowers }
